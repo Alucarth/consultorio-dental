@@ -18,3 +18,13 @@ Route::get('/', function () {
 Route::get('test', function () {
     return view('admin_template');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+Route::get('/pacientes', function () {
+    return view('pacientes.lista');
+});
+Route::get('/paciente/1', function () {
+    return view('pacientes.mostrar');
+});

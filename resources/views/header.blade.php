@@ -103,6 +103,8 @@
                         </li>
                     </ul>
                 </li>
+
+
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
@@ -110,7 +112,36 @@
                         <!-- The user image in the navbar-->
                         <img src="{{ asset("/bower_components/AdminLTE/dist/img/user2-160x160.jpg") }}" class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs">
+                            @if (Auth::guest())
+                                 <li><a href="{{ url('/login') }}">Login</a></li>
+                                 <li><a href="{{ url('/register') }}">Register</a></li>
+                            @else 
+
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} 
+
+                            </a>
+
+                     
+                                <li>
+                                    <a href="{{ url('/logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                         
+
+                             </li>
+                             @endif
+
+                        </span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
