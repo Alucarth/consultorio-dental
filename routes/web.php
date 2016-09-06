@@ -21,10 +21,7 @@ Route::get('test', function () {
 
 Auth::routes();
 
+Route::resource('pacientes','PacienteController');
+Route::resource('citas','CitaController');
+
 Route::get('/home', 'HomeController@index');
-Route::get('/pacientes', function () {
-    return view('pacientes.lista');
-});
-Route::get('/paciente/1', function () {
-    return view('pacientes.mostrar');
-});

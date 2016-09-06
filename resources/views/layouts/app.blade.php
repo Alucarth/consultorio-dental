@@ -1,3 +1,22 @@
+
+<?php
+
+     require base_path() . '/app/Libs/DavidHelper.php';
+    function NavLink($ruta,$texto,$titulo=null)
+    {
+        $david = new DavidHelper();
+        if($titulo)
+        {
+             echo $david->NavLink2($ruta,$texto,$titulo);
+        }else
+        {
+         echo $david->NavLink($ruta,$texto);
+        }
+
+      //  echo '<h1>hola</h1>';
+    }
+   // $keyrus = new DavidHelper(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +33,7 @@
     {{-- <link href={{ asset("/css/app.css") }} rel="stylesheet"> --}}
 
     <link href={{ asset("bower_components/bootstrap/dist/css/bootstrap.min.css")}} rel="stylesheet">
-    @yield('head')
+  
 
 
     <!-- Scripts -->
@@ -26,10 +45,18 @@
     <style type="text/css">
         body { padding-top: 70px; }
     </style>
-    
+
+
+    <script src={{ asset("bower_components/jquery/dist/jquery.min.js")}}></script>
+    <script src={{ asset("bower_components/bootstrap/dist/js/bootstrap.min.js")}}></script>
+
+      @yield('head')
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+
+
+
+    <nav class="navbar navbar-default navbar-fixed-top">
 
         <div class="container">
             <div class="navbar-header">
@@ -41,10 +68,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
+                    {{-- {{DavidHelper::getInstance()->NavLink("pacientes","pacientes") }}  --}}
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Consultorio Dental
+                    Consultorio Dental  
                 </a>
             </div>
 
@@ -53,9 +80,12 @@
                 <ul class="nav navbar-nav">
                     &nbsp;
                     @if (!Auth::guest())
-                    <li class="active"><a href="#">Principal</a></li>
-                    <li><a href="#about">Pacientes</a></li>
-                    <li><a href="#contact">Citas</a></li>
+                    <?php NavLink("home","home","Principal"); ?>
+                    {{-- <?DavidHelper::getInstance()->Link("pacientes","pacientes");?> --}}
+                    {{-- {{ HTML::nav_link('pacientes', 'pacientes') }} --}}
+                    <?php NavLink("pacientes","pacientes"); ?>
+                    <?php NavLink("citas","citas"); ?>
+                 
                     @endif
                 </ul>
 
@@ -94,13 +124,13 @@
 
 
 
+    
         @yield('content')
    
 
     <!-- Scripts -->
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> --}}
-    <script src={{ asset("bower_components/jquery/dist/jquery.min.js")}}></script>
-    <script src={{ asset("bower_components/bootstrap/dist/js/bootstrap.min.js")}}></script>
+   
     {{-- <script src="{{ asset("/js/app.js")}}"></script> --}}
 </body>
 </html>
