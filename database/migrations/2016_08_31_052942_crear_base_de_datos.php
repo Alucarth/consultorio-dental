@@ -14,6 +14,15 @@ class CrearBaseDeDatos extends Migration
     public function up()
     {
         //
+        //  Schema::drop('odontologos');
+        // Schema::drop('pacientes');
+        // Schema::drop('tratamientos');
+        //  Schema::drop('anamnesis');
+        //   Schema::drop('historiales');
+        //    Schema::drop('odontogramas');
+        //     Schema::drop('citas');
+        //     Schema::drop('pagos');
+            
           Schema::create('odontologos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
@@ -26,7 +35,6 @@ class CrearBaseDeDatos extends Migration
             $table->string('nombre');
             $table->integer('telefono');
             $table->integer('edad');
-            $table->integer('balance');
             $table->string('sexo');
             $table->string('informacion_adicional');
             $table->integer('id_odontologo');
@@ -38,7 +46,8 @@ class CrearBaseDeDatos extends Migration
             $table->string('descripcion');
             $table->integer('id_paciente');
             $table->integer('id_odontologo');
-         
+            $table->integer('balance');
+            $table->integer('costo');
             $table->timestamps();
             });
 
@@ -102,5 +111,6 @@ class CrearBaseDeDatos extends Migration
           Schema::drop('historiales');
            Schema::drop('odontogramas');
             Schema::drop('citas');
+            Schema::drop('pagos');
     }
 }

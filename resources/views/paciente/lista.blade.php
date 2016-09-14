@@ -27,9 +27,22 @@
 
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                
+                  
+                 <div class="panel-heading">
+
+                  <h4>Pacientes
+                    <span class="btn-group pull-right">
+                        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon-plus-sign"></span> Adiconar Nuevo Paciente</a>
+                       
+                    </span>
+                  </h4>
+                 
+                 </div>
                 <div class="panel-body">
-                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">  Nuevo Paciente <span class="glyphicon glyphicon-plus" ></span> </button>
+
+                   
+                   
+                    
                     <table id="lista" class="table" cellspacing="0" width="100%">
 
                         <thead>

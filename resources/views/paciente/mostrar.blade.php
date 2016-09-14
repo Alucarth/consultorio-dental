@@ -2,11 +2,9 @@
 
 @section('head')
 
-   
+  <link href={{ asset("DataTables-1.10.12/media/css/dataTables.bootstrap.min.css")}} rel="stylesheet">
 
-     
- 
-        
+  <script src={{ asset("DataTables-1.10.12/media/js/jquery.dataTables.min.js")}}></script> 
 
 @endsection
 
@@ -27,17 +25,16 @@
                     <button type="button" class="btn btn-warning btn-xs" > <span class="glyphicon glyphicon-pencil" ></span> </button>
                     <button type="button" class="btn btn-danger btn-xs" > <span class="glyphicon glyphicon-remove" ></span> </button> 
                </h4>  --}}
-                  <h3 class="panel-title">
-                  {{--   <a data-toggle="collapse" href="#details" class="collapsed"> --}}
-                      <div>
-                        <span> {{ strtoupper($paciente->nombre)}} </span>
-                        <span class="pull-right">
-                          <button type="button" class="btn btn-warning btn-xs" > <span class="glyphicon glyphicon-pencil" ></span> </button>
-                          <button type="button" class="btn btn-danger btn-xs" > <span class="glyphicon glyphicon-trash" ></span> </button> 
-                        </span>
-                      </div>
-                    {{-- </a> --}}
-                  </h>
+                <h4>{{ ucwords($paciente->nombre)}}
+                  <span class="btn-group pull-right">
+
+                      <a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon-plus-sign" ></span> Adicionar Cita</a>
+                      <a href="#" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil" ></span> Editar</a>
+                      <a href="#" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash" ></span> Borrar</a>
+                     
+                  </span>
+                </h4>
+                 
                 
                 </div>
                 <div class="panel-body">
@@ -46,16 +43,13 @@
                    <label> Telefono:  </label> {{$paciente->telefono}}
                    <br>
                    <label> Informacion Adicional: </label> {{$paciente->informacion_adicional}}
-                   <br>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"> Nueva Cita <span class="glyphicon glyphicon-plus" ></span> </button>
-                        
-                   <br>
+                
                    <br>
                    <div>
 
                       <!-- Nav tabs -->
                       <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Tratamiento</a></li>
+                        <li role="presentation" class="active"><a href="#tratamiento" aria-controls="tratamiento" role="tab" data-toggle="tab">Tratamiento</a></li>
                         <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Odontograma</a></li>
                         <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Historial Clinico</a></li>
                         <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">anamnesis </a></li>
@@ -64,7 +58,55 @@
 
                       <!-- Tab panes -->
                       <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="home">lista de tratamientos</div>
+                        <div role="tabpanel" class="tab-pane active" id="tratamiento">
+                        
+                           <div class="panel panel-default">
+                  
+                              
+                              <div class="panel-body">
+
+                                <span class="btn-group pull-left">
+                                      <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon-plus-sign"></span> Nuevo Tratamiento</a>
+                                     
+                                  </span>
+                                  <table id="lista_tratamiento" class="table" cellspacing="0" width="100%">
+
+                                      <thead>
+                                          <tr>
+                                              <th>Descipcion</th>
+                                              <th>Odontograma</th>
+                                              <th>Costo</th>
+                                              <th>Saldo</th>
+                                              <th>Accion</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+
+                                      {{-- @foreach ($pacientes as $paciente) --}}
+                               
+                                            <tr>
+                                              <td> descripcion</td>
+                                              <td> Odontograma</td>
+                                              <td> 500 </td>
+                                              <td> 200 </td>
+                                              <td>
+                                              <a class="btn btn-info btn-sm " href="#"> <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                                              </a>
+                             
+
+                                                  
+                                              </td>
+                                          </tr>
+                                      {{-- @endforeach --}}
+                                        
+                                       
+                                        </tbody>
+                                  </table>
+
+                              </div>
+                          </div>
+
+                        </div>
                         <div role="tabpanel" class="tab-pane" id="profile">odontograma</div>
                         <div role="tabpanel" class="tab-pane" id="messages">historial lista</div>
                         <div role="tabpanel" class="tab-pane" id="settings">anamnesis</div>
@@ -119,5 +161,16 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#lista_tratamiento').DataTable({
+      paging: false
+    });
 
+  }
+
+ );
+
+
+</script>
 @endsection
