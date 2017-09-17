@@ -80,7 +80,7 @@
                 <ul class="nav navbar-nav">
                     &nbsp;
                     @if (!Auth::guest())
-                    <?php NavLink("home","home","Principal"); ?>
+                  
                     {{-- <?DavidHelper::getInstance()->Link("pacientes","pacientes");?> --}}
                     {{-- {{ HTML::nav_link('pacientes', 'pacientes') }} --}}
                     <?php NavLink("pacientes","pacientes"); ?>

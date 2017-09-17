@@ -56,10 +56,10 @@
 		next: "next",
 		prevYear: "prev year",
 		nextYear: "next year",
-		today: 'today',
-		month: 'month',
-		week: 'week',
-		day: 'day'
+		today: 'Hoy',
+		month: 'Mes',
+		week: 'Semana',
+		day: 'Dia'
 	},
 
 	buttonIcons: {

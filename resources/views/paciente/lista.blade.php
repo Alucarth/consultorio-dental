@@ -1,32 +1,86 @@
-@extends('layouts.app')
+@extends('layouts.adminlte')
 
 @section('head')
-  
+   <link href={{ asset("DataTables-1.10.12/media/css/dataTables.bootstrap.min.css")}} rel="stylesheet">
 
-{{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css"/> --}}
-<link href={{ asset("DataTables-1.10.12/media/css/dataTables.bootstrap.min.css")}} rel="stylesheet">
+  <script src={{ asset("DataTables-1.10.12/media/js/jquery.dataTables.min.js")}}></script> 
 
-<script src={{ asset("DataTables-1.10.12/media/js/jquery.dataTables.min.js")}}></script>
-{{-- <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> --}}
- 
+  <script src='{{ asset("bower_components/AdminLTE/plugins/input-mask/jquery.inputmask.js")}}'></script>
+
+  <script src='{{ asset("bower_components/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js")}}'></script>
+  <script src='{{ asset("bower_components/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js")}}'></script>
+
+  <!-- InputMask -->
+{{-- <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
+<script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script> --}}
 
 @endsection
 
 
 @section('content')
 <div class="container">
-    <ol class="breadcrumb">
-    
-      <li class="active">Pacientes</li>
-    </ol>
-
+   
  
     <div class="row">
    
         <br><br>
 
         <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
+
+
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Pacientes</h3>
+              <div class="box-tools pull-right">
+                <!-- Buttons, labels, and many other things can be placed here! -->
+                <!-- Here is a label for example -->
+                {{-- <span class="label label-primary">Label</span> --}}
+                 <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" ><span class="fa fa-user-plus"></span></a>
+              </div><!-- /.box-tools -->
+            </div><!-- /.box-header -->
+            <div class="box-body">
+              
+
+               <table id="lista" class="table" cellspacing="0" width="100%">
+
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Celulares</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach ($pacientes as $paciente)
+                 
+                            <tr>
+
+                                <td>{{$paciente->nombre}}</td>
+                                <td>{{$paciente->celular}}</td>
+                                <td> 
+                                <a class="btn btn-info btn-sm " href="{{url('paciente/historial/'.$paciente->id)}}"> <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                                </a>
+               
+
+                                    
+                                </td>
+                            </tr>
+                        @endforeach
+                          
+                         
+                          </tbody>
+                    </table>
+
+            </div><!-- /.box-body -->
+            {{-- <div class="box-footer"> --}}
+              {{-- The footer of the box --}}
+            {{-- </div>box-footer --}}
+          </div><!-- /.box -->
+
+
+          {{--   <div class="panel panel-default">
                   
                  <div class="panel-heading">
 
@@ -60,7 +114,7 @@
                                 <td>{{$paciente->nombre}}</td>
                                 <td>{{$paciente->telefono}}</td>
                                 <td> 
-                                <a class="btn btn-info btn-sm " href="{{url('pacientes/'.$paciente->id)}}"> <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                                <a class="btn btn-info btn-sm " href="{{url('paciente/historial/'.$paciente->id)}}"> <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                 </a>
                
 
@@ -74,7 +128,7 @@
                     </table>
 
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
@@ -92,13 +146,36 @@
             
             
               <div class="form-group">
-                <label for="nombre_paciente">Nombre Paciente</label>
+                <label for="nombre_paciente">Nombres</label>
                 <input type="text" class="form-control" name="nombre" placeholder="Nombre Completo">
               </div>
+
+              <div class="form-group">
+                <label for="nombre_paciente">Apellidos</label>
+                <input type="text" class="form-control" name="apellidos" placeholder="Apellidos">
+              </div>
+              
+             
               <div class="form-group">
                 <label for="telefono">Telefono</label>
                 <input type="number" class="form-control" name="telefono" placeholder="Telefono">
               </div>
+
+               <div class="form-group">
+                <label for="nombre_paciente">Email</label>
+                <input type="text" class="form-control" name="email" placeholder="Correo Electronico ">
+              </div>
+
+              <div class="form-group">
+                <label for="telefono">Celular</label>
+                <input type="number" class="form-control" name="celular" placeholder="celular">
+              </div>
+
+              <div class="form-group">
+                <label for="Edad">Fecha de Nacimiento </label>
+                <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask name="fecha_nacimiento" >
+              </div>    
+
               <div class="form-group">
                 <label for="Edad">Edad</label>
                 <input type="number" class="form-control" name="edad" placeholder="Edad">
@@ -115,8 +192,13 @@
                 
             </div>
               <div class="form-group">
-                  <label for="descripcion">Descripcion</label>
-                  <textarea class="form-control" rows="3" name="descripcion"></textarea>
+                  <label for="descripcion">Antecedente Enfermedades</label>
+                  <textarea class="form-control" rows="3" name="antecedente_enfermedad"></textarea>
+              </div>
+
+               <div class="form-group">
+                  <label for="descripcion">Informacion Adicional</label>
+                  <textarea class="form-control" rows="3" name="informacion_adicional"></textarea>
               </div> 
 
           
@@ -132,7 +214,7 @@
 </div><!-- /.modal -->
 
 <script type="text/javascript">
-  $(document).ready(function() {
+   $(document).ready(function() {
     $('#lista').DataTable({
       paging: false
     });
@@ -140,7 +222,11 @@
   }
 
  );
-
+   
+   $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+    $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+    //Money Euro
+    $("[data-mask]").inputmask();
 
 </script>
 @endsection

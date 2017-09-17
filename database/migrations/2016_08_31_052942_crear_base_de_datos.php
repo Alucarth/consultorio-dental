@@ -41,15 +41,26 @@ class CrearBaseDeDatos extends Migration
             $table->timestamps();
             });
 
-          Schema::create('tratamientos', function (Blueprint $table) {
+            Schema::create('tratamientos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descripcion');
             $table->integer('id_paciente');
             $table->integer('id_odontologo');
             $table->integer('balance');
-            $table->integer('costo');
+            $table->integer('costo_tratamiento');
             $table->timestamps();
             });
+
+
+            Schema::create('costo_tratamientos', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('id_tratamiento');
+            $table->string('material');
+            $table->integer('precion');
+            $table->timestamps();
+            });
+
+
 
            Schema::create('anamnesis', function (Blueprint $table) {
             $table->increments('id');
@@ -69,9 +80,20 @@ class CrearBaseDeDatos extends Migration
 
             Schema::create('odontogramas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion');
             $table->integer('id_paciente');
-         
+            $table->timestamps();
+            });
+
+            Schema::create('dientes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('nro_pieza');
+
+            $table->string('vestibular');
+            $table->string('distal');
+            $table->string('oclusal');
+            $table->string('palatino');
+            $table->string('mesial');
+
             $table->timestamps();
             });
 
@@ -107,10 +129,12 @@ class CrearBaseDeDatos extends Migration
         Schema::drop('odontologos');
         Schema::drop('pacientes');
         Schema::drop('tratamientos');
-         Schema::drop('anamnesis');
-          Schema::drop('historiales');
-           Schema::drop('odontogramas');
-            Schema::drop('citas');
-            Schema::drop('pagos');
+        Schema::drop('anamnesis');
+        Schema::drop('historiales');
+        Schema::drop('odontogramas');
+        Schema::drop('citas');
+        Schema::drop('pagos');
+        Schema::drop('costo_tratamientos');
+        Schema::drop('dientes');
     }
 }
