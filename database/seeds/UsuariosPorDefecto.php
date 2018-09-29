@@ -14,7 +14,7 @@ class UsuariosPorDefecto extends Seeder
         //
         DB::table('users')->insert([
             'name' => 'admin',
-            'email' => 'yovis@gmail.com',
+            'email' => 'admin@gmail.com',
             'password' => bcrypt('123456'),
         ]);
     }

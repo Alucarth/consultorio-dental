@@ -33,10 +33,16 @@ class CrearBaseDeDatos extends Migration
           Schema::create('pacientes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->integer('telefono');
-            $table->integer('edad');
-            $table->string('sexo');
-            $table->string('informacion_adicional');
+            $table->string('apellidos');
+            $table->date('fecha_nacimiento');
+            $table->integer('telefono')->nullable();
+            $table->integer('celular')->nullable();
+            $table->string('email')->nullable();
+            $table->integer('edad')->nullable();
+            $table->string('sexo')->nullable();
+            $table->string('pais')->nullable();
+            $table->string('informacion_adicional')->nullable();
+            $table->string('antecedente_enfermedad')->nullable();
             $table->integer('id_odontologo');
             $table->timestamps();
             });
@@ -87,7 +93,7 @@ class CrearBaseDeDatos extends Migration
             Schema::create('dientes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('nro_pieza');
-
+            $table->integer('id_paciente');
             $table->string('vestibular');
             $table->string('distal');
             $table->string('oclusal');
@@ -102,6 +108,7 @@ class CrearBaseDeDatos extends Migration
             $table->string('descripcion');
             $table->integer('id_paciente');
             $table->integer('id_odontologo');
+            $table->date('fecha');
             $table->timestamps();
             });
 

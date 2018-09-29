@@ -11,7 +11,7 @@ use App\Anamnesis;
 use App\Tratamiento;
 use App\Pago;
 use Illuminate\Support\Facades\Auth;
-
+use Carbon\Carbon;
 
 class PacienteController extends Controller
 {
@@ -80,7 +80,7 @@ class PacienteController extends Controller
         $paciente = new Paciente;
         $paciente->nombre = $request->input('nombre');
         $paciente->apellidos = $request->input('apellidos');
-        $paciente->fecha_nacimiento = $request->input('fecha_nacimiento');
+        $paciente->fecha_nacimiento = Carbon::now() ;
         $paciente->telefono = $request->input('telefono');
         $paciente->celular = $request->input('celular');
         $paciente->email = $request->input('email');
@@ -89,6 +89,7 @@ class PacienteController extends Controller
         $paciente->informacion_adicional = $request->input('informacion_adicional');
         $paciente->antecedente_enfermedad = $request->input('informacion_adicional');
         $paciente->id_odontologo = $user->id;
+        // return $paciente;
         $paciente->save();
 
         return back()->withInput();
@@ -254,7 +255,7 @@ class PacienteController extends Controller
     public function tratamientos($id)
     {
          $paciente = Paciente::where('id',$id)->first();
-
+        // return $paciente;
          $tratamientos = Tratamiento::where('id_paciente',$id)->get();
 
          return view('paciente.tratamientos',array('paciente' => $paciente, 'tratamientos' => $tratamientos ));

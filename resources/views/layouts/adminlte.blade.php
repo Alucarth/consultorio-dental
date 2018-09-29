@@ -73,7 +73,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition skin-blue layout-top-nav">
+<body class="hold-transition skin-green layout-top-nav">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -81,7 +81,7 @@
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="../../index2.html" class="navbar-brand"> Consultorio Orion</a>
+          <a href="../../index2.html" class="navbar-brand"> Clinica Odontologica Santa Cecilia</a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>
           </button>

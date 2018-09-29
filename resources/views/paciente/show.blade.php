@@ -16,7 +16,7 @@
 @section('menu_paciente')
 	 <div class="user-panel">
         <div class="pull-left image">
-          <img src='{{asset("imagenes/user.jpg")}}' class="img-circle" alt="User Image">
+          <img src='{{asset("imagenes/user.png")}}' class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{$paciente->nombre.' '.$paciente->apellidos}}</p>
