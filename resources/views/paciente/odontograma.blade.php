@@ -299,12 +299,12 @@
                   <td></td>
                   <td></td>
                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                  <td> 
+                  <!-- <td> 
 
                   <label>Fecha</label>
-                  <input type="text" class="form-control" name="fecha" id="datepicker">
+                  <input type="text" class="form-control" name="fecha" id="datepicker"> -->
 
-                  </td>
+                  </td> -->
                  </tr>
 
                  </tr>
@@ -382,12 +382,12 @@
                   <td></td>
                   <td></td>
                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                  <td>
+                  <!-- <td>
                     <label> Descripción </label>
                     <textarea name= "descripcion" class="form-control"></textarea>
                  
 
-                  </td>
+                  </td> -->
                  </tr>
 
                 </table>  

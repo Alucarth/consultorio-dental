@@ -55,8 +55,8 @@ class OdontogramaController extends Controller
                $diente->oclusal = $request->input('oclusial');
                $diente->palatino = $request->input('palatino');
                $diente->id_paciente = $id_paciente;
-               $diente->fecha =$request->input('fecha');
-               $diente->descripcion = $request->input('descripcion');
+            //    $diente->fecha =null;
+            //    $diente->descripcion = $request->input('descripcion');
                $diente->save();
 
               return back()->withInput();

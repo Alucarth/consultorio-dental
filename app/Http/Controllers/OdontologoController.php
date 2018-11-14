@@ -51,7 +51,7 @@ class OdontologoController extends Controller
         $usuario->name = $request->nombre;
         $usuario->email = $request->email;
         $usuario->password = bcrypt($request->password);
-        $usuario->id_odontologo-> $odontologo->id;
+        $usuario->id_odontologo = $odontologo->id;
         $usuario->rol = 1;
         $usuario->save();
 

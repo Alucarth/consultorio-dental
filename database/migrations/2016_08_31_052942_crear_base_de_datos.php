@@ -27,6 +27,8 @@ class CrearBaseDeDatos extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('especialidad');
+            $table->integer('celular')->nullable();
+            $table->string('direccion')->nullable();
             $table->timestamps();
             });
 
@@ -54,6 +56,8 @@ class CrearBaseDeDatos extends Migration
             $table->integer('id_odontologo');
             $table->integer('balance');
             $table->integer('costo_tratamiento');
+            $table->integer('id_diente')->nullable();
+            
             $table->timestamps();
             });
 
@@ -99,7 +103,8 @@ class CrearBaseDeDatos extends Migration
             $table->string('oclusal');
             $table->string('palatino');
             $table->string('mesial');
-
+            $table->date('fecha')->nullable();
+            $table->string('descripcion')->nullable();
             $table->timestamps();
             });
 
@@ -109,6 +114,8 @@ class CrearBaseDeDatos extends Migration
             $table->integer('id_paciente');
             $table->integer('id_odontologo');
             $table->date('fecha');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
             $table->timestamps();
             });
 
