@@ -97,6 +97,7 @@ class PacienteController extends Controller
 
     public function storeAnamnesis(Request $request)
     {
+        return $request->all();
         // return $request->id_paciente;
 
         if($request->has('id_anamnesis'))

@@ -74,9 +74,21 @@ class CrearBaseDeDatos extends Migration
 
            Schema::create('anamnesis', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion');
-            $table->integer('id_paciente');
-        
+            $table->string('descripcion')->nullable();
+            $table->string('motivo_consulta')->nullable();
+            $table->string('alergias')->nullable();
+            $table->string('medicamentos')->nullable();
+            $table->string('tratamientos_autorizados')->nullable();
+            $table->string('medico_cabecera')->nullable();
+            $table->integer('telefono_medico')->nullable();
+            $table->boolean('sangrado_excesivo')->default(0)->nullable();
+            $table->boolean('problema_cardiaco')->default(0)->nullable();
+            $table->boolean('embarazo')->default(0)->nullable();
+            $table->boolean('diabetes')->default(0)->nullable();
+            $table->boolean('presion_baja')->default(0)->nullable();
+            $table->boolean('presion_alta')->default(0)->nullable();
+            $table->boolean('cancer')->default(0)->nullable();
+            $table->integer('id_paciente');        
             $table->timestamps();
             });
 
