@@ -61,7 +61,7 @@
 <script src='{{ asset("bower_components/fullcalendar/dist/fullcalendar.js")}}'></script>
 {{-- <script src='{{ asset("bower_components/AdminLTE/plugins/fullcalendar/locale-all.js")}}'></script> --}}
 <script src='{{ asset("bower_components/fullcalendar/dist/locale/es.js")}}'></script>
-
+<script src='{{ asset("node_modules/chart.js/dist/Chart.js")}}'></script>
 
 
 @yield('head')
@@ -101,6 +101,7 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
+            <?php NavLink("home","Inicio"); ?>
               <?php NavLink("pacientes","pacientes"); ?>
               <?php NavLink("citas","citas"); ?>
             <!-- Messages: style can be found in dropdown.less-->
@@ -119,11 +120,11 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src='{{asset("bower_components/AdminLTE/dist/img/user2-160x160.jpg") }}' class="img-circle" alt="User Image">
+                <img src='{{asset("imagenes/user.png") }}' class="img-circle" alt="User Image">
 
                 <p>
-                   {{ Auth::user()->name." Torrez" }}
-                  <small>Ingenieria de Sistemas</small>
+                   {{ Auth::user()->name." " }}
+                <small>{{ Auth::user()->email }}</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -229,6 +230,6 @@
     </div>
   </div>
 </div>
-
+@yield("script")
 </body>
 </html>

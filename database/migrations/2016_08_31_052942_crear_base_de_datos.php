@@ -141,6 +141,7 @@ class CrearBaseDeDatos extends Migration
             $table->timestamps();
             });
 
+            
 
     }
 

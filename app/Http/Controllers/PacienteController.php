@@ -70,7 +70,8 @@ class PacienteController extends Controller
             $paciente->informacion_adicional = $request->input('informacion_adicional');
             $paciente->antecedente_enfermedad = $request->input('informacion_adicional');
 
-              $paciente->save();
+            $paciente->save();
+
 
             return back()->withInput();
         }
@@ -92,12 +93,65 @@ class PacienteController extends Controller
         // return $paciente;
         $paciente->save();
 
+
+        for ($i=11; $i <= 18 ; $i++) { 
+            # code...
+            $diente = new Diente;
+            $diente->nro_pieza = $i;
+            $diente->id_paciente = $paciente->id;
+            $diente->vestibular = 0;
+            $diente->distal = 0;
+            $diente->mesial = 0;
+            $diente->oclusal = 0;
+            $diente->palatino = 0;
+            $diente->save();
+
+        }
+        for ($i=21; $i <= 28 ; $i++) { 
+            # code...
+            $diente = new Diente;
+            $diente->nro_pieza = $i;
+            $diente->id_paciente = $paciente->id;
+            $diente->vestibular = 0;
+            $diente->distal = 0;
+            $diente->mesial = 0;
+            $diente->oclusal = 0;
+            $diente->palatino = 0;
+            $diente->save();
+        }
+        for ($i=31; $i <=38 ; $i++) { 
+            # code...
+            $diente = new Diente;
+            $diente->nro_pieza = $i;
+            $diente->id_paciente = $paciente->id;
+            $diente->vestibular = 0;
+            $diente->distal = 0;
+            $diente->mesial = 0;
+            $diente->oclusal = 0;
+            $diente->palatino = 0;
+            $diente->save();
+        }
+        for ($i=41; $i <=48 ; $i++) { 
+            # code...
+            $diente = new Diente;
+            $diente->nro_pieza = $i;
+            $diente->id_paciente = $paciente->id;
+            $diente->vestibular = 0;
+            $diente->distal = 0;
+            $diente->mesial = 0;
+            $diente->oclusal = 0;
+            $diente->palatino = 0;
+            $diente->save();
+        }
+
+
+
         return back()->withInput();
     }
 
     public function storeAnamnesis(Request $request)
     {
-        return $request->all();
+        // return $request->all();
         // return $request->id_paciente;
 
         if($request->has('id_anamnesis'))

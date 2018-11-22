@@ -95,8 +95,8 @@
                 <img src='{{asset("bower_components/AdminLTE/dist/img/user2-160x160.jpg") }}' class="img-circle" alt="User Image">
 
                 <p>
-                   {{ Auth::user()->name." Torrez" }}
-                  <small>Ingenieria de Sistemas</small>
+                   {{ Auth::user()->name  }}
+                <small>{{ Auth::user()->email}}</small>
                 </p>
               </li>
               <!-- Menu Body -->

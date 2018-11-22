@@ -69,13 +69,13 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     <a href="{{ url('/login') }}">Iniciar Sesion</a>
-                    <a href="{{ url('/register') }}">Registrarse</a>
+ 
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Consultorio Dental
+                    Consultorio Dental <br>Santa Cecilia 
                 </div>
 
              

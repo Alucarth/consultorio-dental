@@ -60,12 +60,12 @@
           </a>
         </li>
 
-         <li class="active">
+         {{-- <li class="active">
           <a href="{{url('paciente/pagos/'.$paciente->id)}}">
             <i class="fa fa-money"></i> <span>Pagos</span>
          
           </a>
-        </li>
+        </li> --}}
 
       </ul>
 @endsection
