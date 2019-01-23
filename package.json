@@ -16,6 +16,8 @@
     "vue-resource": "^0.9.3"
   },
   "dependencies": {
-    "chart.js": "^2.7.3"
+    "admin-lte": "^2.4.8",
+    "chart.js": "^2.7.3",
+    "gulp-cli": "^2.0.1"
   }
 }
