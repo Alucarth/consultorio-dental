@@ -7,20 +7,25 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-window.$ = window.jQuery = require('jquery');
-require('admin-lte/bower_components/jquery-ui/jquery-ui.min.js');
-require('admin-lte/bower_components/bootstrap/dist/js/bootstrap.min.js');
-require('admin-lte/bower_components/raphael/raphael.min.js');
-require('admin-lte/bower_components/morris.js/morris.min.js');
-require('admin-lte/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js');
-require('admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js');
-require('admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js');
-require('admin-lte/bower_components/jquery-knob/dist/jquery.knob.min.js');
-require('admin-lte/bower_components/bootstrap-daterangepicker/daterangepicker.js');
-require('admin-lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js');
-require('admin-lte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js');
-require('admin-lte/bower_components/fastclick/lib/fastclick.js');
-require('admin-lte/dist/js/adminlte.min.js');
+try {
+    window.$ = window.jQuery = require('jquery');
+
+    // require('bootstrap-sass');
+} catch (e) {}
+
+// require('admin-lte/bower_components/jquery-ui/jquery-ui.min.js');
+// require('~/admin-lte/bower_components/bootstrap/dist/js/bootstrap.min.js');
+// require('admin-lte/bower_components/raphael/raphael.min.js');
+// require('admin-lte/bower_components/morris.js/morris.min.js');
+// require('admin-lte/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js');
+// require('admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js');
+// require('admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js');
+// require('admin-lte/bower_components/jquery-knob/dist/jquery.knob.min.js');
+// require('admin-lte/bower_components/bootstrap-daterangepicker/daterangepicker.js');
+// require('admin-lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js');
+// require('admin-lte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js');
+// require('admin-lte/bower_components/fastclick/lib/fastclick.js');
+// require('~/admin-lte/dist/js/adminlte.min.js');
 // require('admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js');//revisar XD
 
 // require('admin-lte/bower_components/moment/min/moment.min.js');// add moment js via yarn

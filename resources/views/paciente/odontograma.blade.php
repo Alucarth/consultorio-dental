@@ -3,19 +3,8 @@
 
 @section('head')
 
-{{--   <link href={{ asset("DataTables-1.10.12/media/css/dataTables.bootstrap.min.css")}} rel="stylesheet">
 
-  <script src={{ asset("DataTables-1.10.12/media/js/jquery.dataTables.min.js")}}></script>  --}}
-   {{-- <script src={{ asset("bower_components/jquery/dist/jquery.min.js")}}></script> --}}
-
-
-  <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href='{{asset("bower_components/AdminLTE/plugins/datepicker/datepicker3.css")}}'>
-
-  <!-- bootstrap datepicker -->
-  <script src='{{asset("bower_components/AdminLTE/plugins/datepicker/bootstrap-datepicker.js")}}'></script>
-
-  <script src={{ asset("js/keyrushelper.js")}}></script> 
+ 
  
 @endsection
 
@@ -406,249 +395,249 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-
-
-
+@endsection
+@section("script")
+<script src={{ asset("js/keyrushelper.js")}}></script> 
 <script type="text/javascript">
- // $(document).ready(function() {
- //    $('#lista_tratamiento').DataTable({
- //      paging: false
- //    });
-
- //  }
-
- // );
- $('#datepicker').datepicker({
-      autoclose: true
-    });
-
-  $('#modal_diente').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var dienteId = button.data('diente-id') // Extract info from data-* attributes
-  var vestibular = button.data('vestibular')
-  var palatino = button.data('palatino')
-  var paciente = button.data('paciente')    
-  var oclusal = button.data('oclusal')
-  var mesial = button.data('mesial')
-  var distal = button.data('distal')
-
-  // console.log('disparando evento ');
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('Pieza Nro' + dienteId)
-  modal.find('.modal-body #dienteId').val(dienteId)
-  modal.find('.modal-body #pacienteId').val(paciente)
-  modal.find('.modal-body #vestibular').val(vestibular).change()
-  modal.find('.modal-body #palatino').val(palatino).change()
-  modal.find('.modal-body #oclusial').val(oclusal).change()
-  modal.find('.modal-body #mesial').val(mesial).change()
-  modal.find('.modal-body #distal').val(distal).change()
-
-})
-
-  // $('#modal_diente').on('show.bs.modal', function(e) {
-
-  //   //get data-id attribute of the clicked element
-  //     var dienteId = $(e.relatedTarget).data('diente-id');
-
-  //     //populate the textbox
-  //     $(e.currentTarget).find('input[name="diendId"]').val(diendId);
-  //     //populate new title
-  //     modal.find('.modal-title').text('Pieza Nro ' + deinteId)
-  // });
-
-  var dientes = <?php echo $dientes; ?> ;
-  var sw=false;
-  var indice =0;
-
- // console.log(dientes);
-  for(j=0;j<dientes.length;j++)
-  {
-    console.log(dientes[j]['nro_pieza']);
-  }
-
-  var array1118 =[];
-
-  for(i=0;i<8;i++)
-  {
-    sw=false;
-    indice = 0;
-    console.log('iterando sw='+sw+' indice='+indice+' i:'+i);
-
+  // $(document).ready(function() {
+  //    $('#lista_tratamiento').DataTable({
+  //      paging: false
+  //    });
+ 
+  //  }
+ 
+  // );
+  $('#datepicker').datepicker({
+       autoclose: true
+     });
+ 
+   $('#modal_diente').on('show.bs.modal', function (event) {
+   var button = $(event.relatedTarget) // Button that triggered the modal
+   var dienteId = button.data('diente-id') // Extract info from data-* attributes
+   var vestibular = button.data('vestibular')
+   var palatino = button.data('palatino')
+   var paciente = button.data('paciente')    
+   var oclusal = button.data('oclusal')
+   var mesial = button.data('mesial')
+   var distal = button.data('distal')
+ 
+   // console.log('disparando evento ');
+   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+   var modal = $(this)
+   modal.find('.modal-title').text('Pieza Nro' + dienteId)
+   modal.find('.modal-body #dienteId').val(dienteId)
+   modal.find('.modal-body #pacienteId').val(paciente)
+   modal.find('.modal-body #vestibular').val(vestibular).change()
+   modal.find('.modal-body #palatino').val(palatino).change()
+   modal.find('.modal-body #oclusial').val(oclusal).change()
+   modal.find('.modal-body #mesial').val(mesial).change()
+   modal.find('.modal-body #distal').val(distal).change()
+ 
+ });
+ 
+   // $('#modal_diente').on('show.bs.modal', function(e) {
+ 
+   //   //get data-id attribute of the clicked element
+   //     var dienteId = $(e.relatedTarget).data('diente-id');
+ 
+   //     //populate the textbox
+   //     $(e.currentTarget).find('input[name="diendId"]').val(diendId);
+   //     //populate new title
+   //     modal.find('.modal-title').text('Pieza Nro ' + deinteId)
+   // });
+ 
+   var dientes = <?php echo $dientes; ?> ;
+   var sw=false;
+   var indice =0;
+ 
+  // console.log(dientes);
+   for(j=0;j<dientes.length;j++)
+   {
+     console.log(dientes[j]['nro_pieza']);
+   }
+ 
+   var array1118 =[];
+ 
+   for(i=0;i<8;i++)
+   {
+     sw=false;
+     indice = 0;
+     console.log('iterando sw='+sw+' indice='+indice+' i:'+i);
+ 
+       for(j=0;j<dientes.length;j++)
+       {
+ 
+         console.log(dientes[j]['nro_pieza']+" comparando con "+(i+11));
+         if(dientes[j]['nro_pieza']==(i+11))
+         {
+           sw=true;
+           indice = j;
+            console.log(dientes[j]['nro_pieza']);
+             j=dientes.length;
+         }
+        
+ 
+       }
+     console.log('iterando sw='+sw+' indice='+indice+' i:'+i);
+ 
+     var c = document.getElementById("pieza1"+(i+1));
+     if(sw==true)
+     {
+       console.log('objeto econtrado ');
+       //console.log(dientes[indice]);
+       var d = new DibujarDienteRojo(c,dientes[indice]);
+ 
+     }else{
+        var d = new DibujarDiente(c);
+        array1118.push(d);
+     }
+     //var c = document.getElementById("pieza1"+(i+1));
+     //var d = new DibujarDiente(c);
+     //array1118.push(d); 
+   }
+ 
+   var array2128 =[];
+ 
+   for(i=21;i<=28;i++)
+   {
+      sw=false;
+     indice = 0;
+ 
       for(j=0;j<dientes.length;j++)
-      {
-
-        console.log(dientes[j]['nro_pieza']+" comparando con "+(i+11));
-        if(dientes[j]['nro_pieza']==(i+11))
-        {
-          sw=true;
-          indice = j;
-           console.log(dientes[j]['nro_pieza']);
-            j=dientes.length;
-        }
-       
-
-      }
-    console.log('iterando sw='+sw+' indice='+indice+' i:'+i);
-
-    var c = document.getElementById("pieza1"+(i+1));
+       {
+ 
+        // console.log(dientes[j]['nro_pieza']+" comparando con "+(i+11));
+         if(dientes[j]['nro_pieza']==(i))
+         {
+           sw=true;
+           indice = j;
+            console.log(dientes[j]['nro_pieza']);
+             j=dientes.length;
+         }
+        
+ 
+       }
+ 
+    var c = document.getElementById("pieza"+i);
     if(sw==true)
-    {
-      console.log('objeto econtrado ');
-      //console.log(dientes[indice]);
-      var d = new DibujarDienteRojo(c,dientes[indice]);
-
-    }else{
-       var d = new DibujarDiente(c);
-       array1118.push(d);
-    }
-    //var c = document.getElementById("pieza1"+(i+1));
-    //var d = new DibujarDiente(c);
-    //array1118.push(d); 
-  }
-
-  var array2128 =[];
-
-  for(i=21;i<=28;i++)
-  {
-     sw=false;
-    indice = 0;
-
-     for(j=0;j<dientes.length;j++)
-      {
-
-       // console.log(dientes[j]['nro_pieza']+" comparando con "+(i+11));
-        if(dientes[j]['nro_pieza']==(i))
-        {
-          sw=true;
-          indice = j;
-           console.log(dientes[j]['nro_pieza']);
-            j=dientes.length;
-        }
-       
-
-      }
-
-   var c = document.getElementById("pieza"+i);
-   if(sw==true)
-    {
-      console.log('objeto econtrado ');
-      //console.log(dientes[indice]);
-      var d = new DibujarDienteRojo(c,dientes[indice]);
-
-    }else{
-       var d = new DibujarDiente(c);
-       array1118.push(d);
-    }
-    // var c = document.getElementById("pieza"+i);
-    // var d = new DibujarDiente(c);
-   // array2128.push(d); 
-  }
-
-  var array4148 =[];
-  for(i=41;i<=48;i++)
-  {
-     sw=false;
-    indice = 0;
-
-     for(j=0;j<dientes.length;j++)
-      {
-
-       // console.log(dientes[j]['nro_pieza']+" comparando con "+(i+11));
-        if(dientes[j]['nro_pieza']==(i))
-        {
-          sw=true;
-          indice = j;
-           console.log(dientes[j]['nro_pieza']);
-            j=dientes.length;
-        }
-       
-
-      }
-
-   var c = document.getElementById("pieza"+i);
-   if(sw==true)
-    {
-      console.log('objeto econtrado ');
-      //console.log(dientes[indice]);
-      var d = new DibujarDienteRojo(c,dientes[indice]);
-
-    }else{
-       var d = new DibujarDiente(c);
-       array1118.push(d);
-    }
-    // var c = document.getElementById("pieza"+i);
-    // var d = new DibujarDiente(c);
-   // array2128.push(d); 
-  }
-  // for(i=0;i<8;i++)
-  // {
-
-  //   var c = document.getElementById("pieza4"+(i+1));
-  //   var d = new DibujarDiente(c);
-  //   array4148.push(d); 
-  // }
-
-  // var array3138 = [];
-  // for(i=0;i<8;i++)
-  // {
-
-  //   var c = document.getElementById("pieza3"+(i+1));
-  //   var d = new DibujarDiente(c);
-  //   array3138.push(d); 
-  // }
-  for(i=31;i<=38;i++)
-  {
-     sw=false;
-    indice = 0;
-
-     for(j=0;j<dientes.length;j++)
-      {
-
-       // console.log(dientes[j]['nro_pieza']+" comparando con "+(i+11));
-        if(dientes[j]['nro_pieza']==(i))
-        {
-          sw=true;
-          indice = j;
-           console.log(dientes[j]['nro_pieza']);
-            j=dientes.length;
-        }
-       
-
-      }
-
-   var c = document.getElementById("pieza"+i);
-   if(sw==true)
-    {
-      console.log('objeto econtrado ');
-      //console.log(dientes[indice]);
-      var d = new DibujarDienteRojo(c,dientes[indice]);
-
-    }else{
-       var d = new DibujarDiente(c);
-       array1118.push(d);
-    }
-    // var c = document.getElementById("pieza"+i);
-    // var d = new DibujarDiente(c);
-   // array2128.push(d); 
-  }
-  
-  // var c = document.getElementById("pieza18");
-  // var d18 = new DibujarDiente(c); 
-  // var c = document.getElementById("pieza17");
-  // var d17 = new DibujarDiente(c);
-  // var c = document.getElementById("pieza16");
-  // var d16 = new DibujarDiente(c);
-  // var c = document.getElementById("pieza15");
-  // var d15 = new DibujarDiente(c);
-  // var c = document.getElementById("pieza14");
-  // var d14 = new DibujarDiente(c);
-  // var c = document.getElementById("pieza13");
-  // var d13 = new DibujarDiente(c);
-  // var c = document.getElementById("pieza12");
-  // var d12 = new DibujarDiente(c);
-  // var c = document.getElementById("pieza11");
-  // var d11 = new DibujarDiente(c);
-</script>
+     {
+       console.log('objeto econtrado ');
+       //console.log(dientes[indice]);
+       var d = new DibujarDienteRojo(c,dientes[indice]);
+ 
+     }else{
+        var d = new DibujarDiente(c);
+        array1118.push(d);
+     }
+     // var c = document.getElementById("pieza"+i);
+     // var d = new DibujarDiente(c);
+    // array2128.push(d); 
+   }
+ 
+   var array4148 =[];
+   for(i=41;i<=48;i++)
+   {
+      sw=false;
+     indice = 0;
+ 
+      for(j=0;j<dientes.length;j++)
+       {
+ 
+        // console.log(dientes[j]['nro_pieza']+" comparando con "+(i+11));
+         if(dientes[j]['nro_pieza']==(i))
+         {
+           sw=true;
+           indice = j;
+            console.log(dientes[j]['nro_pieza']);
+             j=dientes.length;
+         }
+        
+ 
+       }
+ 
+    var c = document.getElementById("pieza"+i);
+    if(sw==true)
+     {
+       console.log('objeto econtrado ');
+       //console.log(dientes[indice]);
+       var d = new DibujarDienteRojo(c,dientes[indice]);
+ 
+     }else{
+        var d = new DibujarDiente(c);
+        array1118.push(d);
+     }
+     // var c = document.getElementById("pieza"+i);
+     // var d = new DibujarDiente(c);
+    // array2128.push(d); 
+   }
+   // for(i=0;i<8;i++)
+   // {
+ 
+   //   var c = document.getElementById("pieza4"+(i+1));
+   //   var d = new DibujarDiente(c);
+   //   array4148.push(d); 
+   // }
+ 
+   // var array3138 = [];
+   // for(i=0;i<8;i++)
+   // {
+ 
+   //   var c = document.getElementById("pieza3"+(i+1));
+   //   var d = new DibujarDiente(c);
+   //   array3138.push(d); 
+   // }
+   for(i=31;i<=38;i++)
+   {
+      sw=false;
+     indice = 0;
+ 
+      for(j=0;j<dientes.length;j++)
+       {
+ 
+        // console.log(dientes[j]['nro_pieza']+" comparando con "+(i+11));
+         if(dientes[j]['nro_pieza']==(i))
+         {
+           sw=true;
+           indice = j;
+            console.log(dientes[j]['nro_pieza']);
+             j=dientes.length;
+         }
+        
+ 
+       }
+ 
+    var c = document.getElementById("pieza"+i);
+    if(sw==true)
+     {
+       console.log('objeto econtrado ');
+       //console.log(dientes[indice]);
+       var d = new DibujarDienteRojo(c,dientes[indice]);
+ 
+     }else{
+        var d = new DibujarDiente(c);
+        array1118.push(d);
+     }
+     // var c = document.getElementById("pieza"+i);
+     // var d = new DibujarDiente(c);
+    // array2128.push(d); 
+   }
+   
+   // var c = document.getElementById("pieza18");
+   // var d18 = new DibujarDiente(c); 
+   // var c = document.getElementById("pieza17");
+   // var d17 = new DibujarDiente(c);
+   // var c = document.getElementById("pieza16");
+   // var d16 = new DibujarDiente(c);
+   // var c = document.getElementById("pieza15");
+   // var d15 = new DibujarDiente(c);
+   // var c = document.getElementById("pieza14");
+   // var d14 = new DibujarDiente(c);
+   // var c = document.getElementById("pieza13");
+   // var d13 = new DibujarDiente(c);
+   // var c = document.getElementById("pieza12");
+   // var d12 = new DibujarDiente(c);
+   // var c = document.getElementById("pieza11");
+   // var d11 = new DibujarDiente(c);
+ </script>
 @endsection

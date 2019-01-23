@@ -3,12 +3,12 @@
 
 @section('head')
 
-  <script src='{{ asset("bower_components/AdminLTE/plugins/input-mask/jquery.inputmask.js")}}'></script>
+  {{-- <script src='{{ asset("bower_components/AdminLTE/plugins/input-mask/jquery.inputmask.js")}}'></script>
 
   <script src='{{ asset("bower_components/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js")}}'></script>
-  <script src='{{ asset("bower_components/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js")}}'></script>
+  <script src='{{ asset("bower_components/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js")}}'></script> --}}
 
-   <script src='{{ asset("bower_components/jsPDF/dist/jspdf.debug.js")}}'></script>
+   {{-- <script src='{{ asset("bower_components/jsPDF/dist/jspdf.debug.js")}}'></script> --}}
   {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script> --}}
  
 @endsection
@@ -200,71 +200,73 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+@endsection
+@section("script")
 <script type="text/javascript"> 
 
 
-var paciente = <?php echo  json_encode($paciente); ?>;
-
-  $('#myModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var pacienteId = button.data('id') // Extract info from data-* attributes
-  var nombre = button.data('nombre');
-  var apellidos = button.data('apellidos');
-  var telefono = button.data('telefono');
-  var email = button.data('email');
-  var celular = button.data('celular');
-  var fecha_nacimiento = button.data('fecha_nacimiento');
-  var edad = button.data('edad');
-  var antecedente_enfermedad = button.data('antecedente_enfermedad');
-  var informacion_adicional = button.data('informacion_adicional');
-  var sexo= button.data('sexo');
-
-
-  // console.log('disparando evento ');
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
- // modal.find('.modal-title').text('Pieza Nro' + dienteId)
-  modal.find('.modal-body #paciente_id').val(pacienteId)
-
-  modal.find('.modal-body #nombre').val(nombre)
-  modal.find('.modal-body #apellidos').val(apellidos).change()
-  modal.find('.modal-body #telefono').val(telefono).change()
-  modal.find('.modal-body #email').val(email).change()
-  modal.find('.modal-body #celular').val(celular).change()
-  modal.find('.modal-body #fecha_nacimiento').val(fecha_nacimiento).change()
-  modal.find('.modal-body #edad').val(edad).change()
-  modal.find('.modal-body #antecedente_enfermedad').val(antecedente_enfermedad).change()
-  modal.find('.modal-body #informacion_adicional').val(informacion_adicional).change()
-  modal.find('.modal-body #sexo').val(sexo).change()
+  var paciente = <?php echo  json_encode($paciente); ?>;
   
-
-})
+    $('#myModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var pacienteId = button.data('id') // Extract info from data-* attributes
+    var nombre = button.data('nombre');
+    var apellidos = button.data('apellidos');
+    var telefono = button.data('telefono');
+    var email = button.data('email');
+    var celular = button.data('celular');
+    var fecha_nacimiento = button.data('fecha_nacimiento');
+    var edad = button.data('edad');
+    var antecedente_enfermedad = button.data('antecedente_enfermedad');
+    var informacion_adicional = button.data('informacion_adicional');
+    var sexo= button.data('sexo');
+  
+  
+    // console.log('disparando evento ');
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+   // modal.find('.modal-title').text('Pieza Nro' + dienteId)
+    modal.find('.modal-body #paciente_id').val(pacienteId)
+  
+    modal.find('.modal-body #nombre').val(nombre)
+    modal.find('.modal-body #apellidos').val(apellidos).change()
+    modal.find('.modal-body #telefono').val(telefono).change()
+    modal.find('.modal-body #email').val(email).change()
+    modal.find('.modal-body #celular').val(celular).change()
+    modal.find('.modal-body #fecha_nacimiento').val(fecha_nacimiento).change()
+    modal.find('.modal-body #edad').val(edad).change()
+    modal.find('.modal-body #antecedente_enfermedad').val(antecedente_enfermedad).change()
+    modal.find('.modal-body #informacion_adicional').val(informacion_adicional).change()
+    modal.find('.modal-body #sexo').val(sexo).change()
     
-   $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-    $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
-    //Money Euro
-    $("[data-mask]").inputmask();
-
-$("#imprimir").click(function() {
-  // alert("hola");
-  console.log(paciente);
-  var doc = new jsPDF();
-  doc.text(80, 20, 'Historial Clinico');
-  doc.text(20, 30, 'Paciente: '+paciente.nombre +" "+paciente.apellidos);
-
-  doc.text(20, 40, 'Correo Electronico: '+paciente.email);
-  doc.text(20, 50, 'celular: '+paciente.celular);
-  doc.text(20, 60, 'Fecha de Vencimiento: '+paciente.fecha_nacimiento);
-  doc.text(20, 70, 'Edad : '+paciente.edad);
-  doc.text(20, 80, 'Antedentes : '+paciente.antecedente_enfermedad);
-  doc.text(20, 90, 'Informacion Adicional :' + paciente.informacion_adicional);
-  doc.text(20, 100, 'Sexo: '+paciente.sexo );
-
-
-  doc.save('histoiral.pdf');
-});    
-
-</script>
-
+  
+  })
+      
+     $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+      $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+      //Money Euro
+      $("[data-mask]").inputmask();
+  
+  $("#imprimir").click(function() {
+    // alert("hola");
+    console.log(paciente);
+    var doc = new jsPDF();
+    doc.text(80, 20, 'Historial Clinico');
+    doc.text(20, 30, 'Paciente: '+paciente.nombre +" "+paciente.apellidos);
+  
+    doc.text(20, 40, 'Correo Electronico: '+paciente.email);
+    doc.text(20, 50, 'celular: '+paciente.celular);
+    doc.text(20, 60, 'Fecha de Vencimiento: '+paciente.fecha_nacimiento);
+    doc.text(20, 70, 'Edad : '+paciente.edad);
+    doc.text(20, 80, 'Antedentes : '+paciente.antecedente_enfermedad);
+    doc.text(20, 90, 'Informacion Adicional :' + paciente.informacion_adicional);
+    doc.text(20, 100, 'Sexo: '+paciente.sexo );
+  
+  
+    doc.save('histoiral.pdf');
+  });    
+  
+  </script>
+  
 @endsection

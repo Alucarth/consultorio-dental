@@ -194,68 +194,58 @@
 </div><!-- /.modal -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+@endsection
+@section("script")
 <script type="text/javascript">
-   $(document).ready(function() {
-    $('#lista_tratamiento').DataTable({
-      paging: false
-    });
+  $(document).ready(function() {
+   $('#lista_tratamiento').DataTable({
+     paging: false
+   });
 
-  }
+ }
 
- );
+);
 
-    $('#myModal').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget) // Button that triggered the modal
-      var descripcion = button.data('descripcion') // Extract info from data-* attributes
-     // var id_diente = button.data('id_diente')
-      var id_tratamiento=button.data('id_tratamiento')
-      var costo_tratamiento = button.data('costo_tratamiento');
-      // var medicamentos = button.data('medicamentos')
-      // var tratamientos_autorizados = button.data('tratamientos_autorizados')
-      // var sangrado_excesivo = button.data('sangrado_excesivo')
-      // var problema_cardiaco = button.data('problema_cardiaco')
-      // var embarazo = button.data('embarazo')
-      // var diabetes = button.data('diabetes')
-      // var presion_baja = button.data('presion_baja')
-      // var presion_alta = button.data('presion_alta')
-      // var cancer = button.data('cancer')
-      // var medico_cabecera = button.data('medico_cabecera')
-      // var telefono_medico = button.data('telefono_medico')
+   $('#myModal').on('show.bs.modal', function (event) {
+     var button = $(event.relatedTarget) // Button that triggered the modal
+     var descripcion = button.data('descripcion') // Extract info from data-* attributes
+    // var id_diente = button.data('id_diente')
+     var id_tratamiento=button.data('id_tratamiento')
+     var costo_tratamiento = button.data('costo_tratamiento');
+     // var medicamentos = button.data('medicamentos')
+     // var tratamientos_autorizados = button.data('tratamientos_autorizados')
+     // var sangrado_excesivo = button.data('sangrado_excesivo')
+     // var problema_cardiaco = button.data('problema_cardiaco')
+     // var embarazo = button.data('embarazo')
+     // var diabetes = button.data('diabetes')
+     // var presion_baja = button.data('presion_baja')
+     // var presion_alta = button.data('presion_alta')
+     // var cancer = button.data('cancer')
+     // var medico_cabecera = button.data('medico_cabecera')
+     // var telefono_medico = button.data('telefono_medico')
 
 
 
-      // console.log('disparando evento ');
-      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-      var modal = $(this)
-     // modal.find('.modal-title').text('Pieza Nro' + dienteId)
-      modal.find('.modal-body #descripcion').val(descripcion)
-     // modal.find('.modal-body #id_diente').val(id_diente).change()
-      modal.find('.modal-body #id_tratamiento').val(id_tratamiento)
-      modal.find('.modal-body #costo_tratamiento').val(costo_tratamiento).change()
-      // modal.find('.modal-body #tratamientos_autorizados').val(tratamientos_autorizados).change()
-      // modal.find('.modal-body #sangrado_excesivo').val(sangrado_excesivo).change()
-      // modal.find('.modal-body #problema_cardiaco').val(problema_cardiaco).change()
-      // modal.find('.modal-body #embarazo').val(embarazo).change()
-      // modal.find('.modal-body #diabetes').val(diabetes).change()
-      // modal.find('.modal-body #presion_alta').val(presion_baja).change()
-      // modal.find('.modal-body #cancer').val(cancer).change()
-      // modal.find('.modal-body #medico_cabecera').val(medico_cabecera).change()
-      // modal.find('.modal-body #telefono_medico').val(telefono_medico).change()
+     // console.log('disparando evento ');
+     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+     var modal = $(this)
+    // modal.find('.modal-title').text('Pieza Nro' + dienteId)
+     modal.find('.modal-body #descripcion').val(descripcion)
+    // modal.find('.modal-body #id_diente').val(id_diente).change()
+     modal.find('.modal-body #id_tratamiento').val(id_tratamiento)
+     modal.find('.modal-body #costo_tratamiento').val(costo_tratamiento).change()
+     // modal.find('.modal-body #tratamientos_autorizados').val(tratamientos_autorizados).change()
+     // modal.find('.modal-body #sangrado_excesivo').val(sangrado_excesivo).change()
+     // modal.find('.modal-body #problema_cardiaco').val(problema_cardiaco).change()
+     // modal.find('.modal-body #embarazo').val(embarazo).change()
+     // modal.find('.modal-body #diabetes').val(diabetes).change()
+     // modal.find('.modal-body #presion_alta').val(presion_baja).change()
+     // modal.find('.modal-body #cancer').val(cancer).change()
+     // modal.find('.modal-body #medico_cabecera').val(medico_cabecera).change()
+     // modal.find('.modal-body #telefono_medico').val(telefono_medico).change()
 
-    });
+   });
 </script>
 
 @endsection

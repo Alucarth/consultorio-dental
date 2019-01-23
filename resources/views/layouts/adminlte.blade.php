@@ -25,46 +25,11 @@
   <title>Consultorio Dental</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href='{{ asset("bower_components/AdminLTE/bootstrap/css/bootstrap.min.css")}} '>
-  <!-- Font Awesome -->
   <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'>
   <!-- Ionicons -->
   <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'>
-  <!-- Theme style -->
-  <link rel="stylesheet" href='{{asset("bower_components/AdminLTE/dist/css/AdminLTE.min.css")}}'>
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href='{{asset("bower_components/AdminLTE/dist/css/skins/_all-skins.min.css") }}'>
-
-    <!-- fullCalendar 2.2.5-->
-  <link rel="stylesheet" href='{{ asset("bower_components/AdminLTE/plugins/fullcalendar/fullcalendar.min.css")}}'>
-  <link rel="stylesheet" href='{{ asset("bower_components/AdminLTE/plugins/fullcalendar/fullcalendar.print.css")}}' media="print">
-
-
-
-<!-- jQuery 2.2.3 -->
-<script src='{{ asset("bower_components/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js")}}'></script>
-<!-- Bootstrap 3.3.6 -->
-<script src='{{ asset("bower_components/AdminLTE/bootstrap/js/bootstrap.min.js")}}'></script>
-<!-- SlimScroll -->
-<script src='{{ asset("bower_components/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js")}}'></script>
-<!-- FastClick -->
-<script src='{{ asset("bower_components/AdminLTE/plugins/fastclick/fastclick.js")}}'></script>
-<!-- AdminLTE App -->
-<script src='{{ asset("bower_components/AdminLTE/dist/js/app.min.js")}}'></script>
-<!-- AdminLTE for demo purposes -->
-<script src='{{ asset("bower_components/AdminLTE/dist/js/demo.js")}}'></script>
-
- <!-- fullCalendar 2.2.5 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src='{{ asset("bower_components/fullcalendar/dist/fullcalendar.js")}}'></script>
-{{-- <script src='{{ asset("bower_components/AdminLTE/plugins/fullcalendar/locale-all.js")}}'></script> --}}
-<script src='{{ asset("bower_components/fullcalendar/dist/locale/es.js")}}'></script>
-<script src='{{ asset("node_modules/chart.js/dist/Chart.js")}}'></script>
-
-
-@yield('head')
+  <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -72,13 +37,24 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  
 </head>
 <body class="hold-transition skin-green layout-top-nav">
 <!-- Site wrapper -->
 <div class="wrapper">
 
  <header class="main-header">
+    <a href="index2.html" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>C</b>SC</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>Clinica Odontologica</b> Santa Cecilia</span>
+    </a>
     <nav class="navbar navbar-static-top">
+      
       <div class="container">
         <div class="navbar-header">
           <a href="../../index2.html" class="navbar-brand"> Clinica Odontologica Santa Cecilia</a>
@@ -137,7 +113,7 @@
                 <div class="pull-right">
                   <form id="logout-form" action="{{ url('/logout') }}" method="POST">
                                         {{ csrf_field() }}
-                                        <button type="submit" class="btn btn-default" >Cerrar Session</button>
+                                        <button type="submit" class="btn btn-default" >Salir</button>
                                     </form>
                  
                 </div>
@@ -230,6 +206,7 @@
     </div>
   </div>
 </div>
+<script src="{{ elixir('js/app.js') }}"></script>
 @yield("script")
 </body>
 </html>

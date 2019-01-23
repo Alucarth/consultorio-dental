@@ -1,22 +1,5 @@
 @extends('layouts.adminlte')
 
-@section('head')
-   <link href={{ asset("DataTables-1.10.12/media/css/dataTables.bootstrap.min.css")}} rel="stylesheet">
-
-  <script src={{ asset("DataTables-1.10.12/media/js/jquery.dataTables.min.js")}}></script> 
-
-  <script src='{{ asset("bower_components/AdminLTE/plugins/input-mask/jquery.inputmask.js")}}'></script>
-
-  <script src='{{ asset("bower_components/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js")}}'></script>
-  <script src='{{ asset("bower_components/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js")}}'></script>
-
-  <!-- InputMask -->
-{{-- <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script> --}}
-
-@endsection
-
 
 @section('content')
 <div class="container">
@@ -213,20 +196,23 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+
+@endsection
+@section('script')
 <script type="text/javascript">
-   $(document).ready(function() {
-    $('#lista').DataTable({
-      paging: false
-    });
+  $(document).ready(function() {
+   $('#lista').DataTable({
+     paging: false
+   });
 
-  }
+ }
 
- );
-   
-   $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-    $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
-    //Money Euro
-    $("[data-mask]").inputmask();
+);
+  
+  $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+   $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+   //Money Euro
+   $("[data-mask]").inputmask();
 
-</script>
+</script>    
 @endsection
