@@ -153,8 +153,19 @@
                 <label for="telefono">Celular</label>
                 <input type="number" class="form-control" name="celular" placeholder="celular">
               </div>
-
-              <div class="form-group">
+              <crear-paciente inline-template>
+                
+                <div class="form-group">
+                  <label for="Edad">Fecha de Nacimiento </label>
+                  <input type="text" class="form-control" v-model='birthdate' data-inputmask="'alias': 'dd/mm/yyyy'" data-mask name="fecha_nacimiento" >
+                </div>    
+                <div class="form-group">
+                  <label for="Edad">Edad</label>
+                  <input type="number" class="form-control" :value='getAge(birthdate)' name="edad" placeholder="Edad">
+                </div>  
+                
+              </crear-paciente>
+              {{-- <div class="form-group">
                 <label for="Edad">Fecha de Nacimiento </label>
                 <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask name="fecha_nacimiento" >
               </div>    
@@ -162,7 +173,7 @@
               <div class="form-group">
                 <label for="Edad">Edad</label>
                 <input type="number" class="form-control" name="edad" placeholder="Edad">
-              </div>    
+              </div>     --}}
              <div class="form-group">
                 <label for="Sexo">Sexo</label>
 

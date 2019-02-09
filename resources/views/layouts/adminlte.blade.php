@@ -42,7 +42,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   
 </head>
-<body class="hold-transition skin-green layout-top-nav">
+<body class="hold-transition skin-blue layout-top-nav">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -173,7 +173,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.6
     </div>
-    <strong>Copyright &copy; 2017 <a href="http://almsaeedstudio.com">Spectral Code</a>.</strong> 
+    <strong>Copyright &copy; 2017 <a href="http://almsaeedstudio.com">Consulotior Dental </a>.</strong> 
   </footer>
 
   <!-- Control Sidebar -->

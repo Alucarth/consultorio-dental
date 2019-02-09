@@ -1,3 +1,21 @@
+<?php
+
+     require base_path() . '/app/Libs/DavidHelper.php';
+    function NavLink($ruta,$texto,$titulo=null)
+    {
+        $david = new DavidHelper();
+        if($titulo)
+        {
+             echo $david->NavLink2($ruta,$texto,$titulo);
+        }else
+        {
+         echo $david->NavLink($ruta,$texto);
+        }
+
+      //  echo '<h1>hola</h1>';
+    }
+   // $keyrus = new DavidHelper(); 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +40,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-green sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
   <header class="main-header">
@@ -47,7 +65,7 @@
           <!-- Notifications: style can be found in dropdown.less -->
         
           <!-- Tasks: style can be found in dropdown.less -->
-          
+          <?php NavLink("pacientes","pacientes"); ?>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -114,7 +132,9 @@
     <!-- Main content -->
     <section class="content">
       <!-- Small boxes (Stat box) -->
-      @yield('content')
+      <div id="app">
+        @yield('content')
+      </div>
 
     </section>
     <!-- /.content -->

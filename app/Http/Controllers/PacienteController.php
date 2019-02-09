@@ -52,7 +52,8 @@ class PacienteController extends Controller
         $user = Auth::user();
 
          $input = $request->all();
-
+        //  $date =  Carbon::createFromFormat('d/m/Y',$request->fecha_nacimiento);
+        // return $date;
 
          //para edicion del paciente
         if ($request->has('paciente_id')) {
@@ -60,7 +61,7 @@ class PacienteController extends Controller
             $paciente = Paciente::where('id',$request->input('paciente_id'))->first();
             $paciente->nombre = $request->input('nombre');
             $paciente->apellidos = $request->input('apellidos');
-            $paciente->fecha_nacimiento = $request->input('fecha_nacimiento');
+            $paciente->fecha_nacimiento = Carbon::createFromFormat('d/m/Y',$request->fecha_nacimiento)->toDateString();
             $paciente->telefono = $request->input('telefono');
             $paciente->celular = $request->input('celular');
             $paciente->email = $request->input('email');
@@ -81,7 +82,7 @@ class PacienteController extends Controller
         $paciente = new Paciente;
         $paciente->nombre = $request->input('nombre');
         $paciente->apellidos = $request->input('apellidos');
-        $paciente->fecha_nacimiento = Carbon::now() ;
+        $paciente->fecha_nacimiento =  Carbon::createFromFormat('d/m/Y',$request->fecha_nacimiento)->toDateString();
         $paciente->telefono = $request->input('telefono');
         $paciente->celular = $request->input('celular');
         $paciente->email = $request->input('email');
