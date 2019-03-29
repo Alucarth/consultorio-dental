@@ -11,10 +11,12 @@ window._ = require('lodash');
 try {
     window.$ = window.jQuery = require('jquery');
     // require('datatables.net-dt');
+   
     require('bootstrap');
-    window.dt = require( 'datatables.net' )();
+    // require( 'datatables.net-bs' )( window, window.$ );
     // require('admin-lte/bower_components/jquery-ui/jquery-ui.min.js');
     // $.widget.bridge('uibutton', $.ui.button);
+     window.dt = require( 'datatables.net-bs' )( window.$ );
 } catch (e) {}
     require('admin-lte');
     require('admin-lte/plugins/input-mask/jquery.inputmask.js');

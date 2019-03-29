@@ -25,7 +25,7 @@
             <div class="box-body">
               
 
-               <table id="lista" class="table" cellspacing="0" width="100%">
+               <table id="lista" class="table table-hover table-bordered dt-responsive nowrap" >
 
                         <thead>
                             <tr>
@@ -211,19 +211,7 @@
 @endsection
 @section('script')
 <script type="text/javascript">
-  $(document).ready(function() {
-   $('#lista').DataTable({
-     paging: false
-   });
 
- }
-
-);
-  
-  $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-   $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
-   //Money Euro
-   $("[data-mask]").inputmask();
 
 </script>    
 @endsection
