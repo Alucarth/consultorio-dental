@@ -80,7 +80,7 @@
     <div class="box-tools pull-right">
       <!-- Buttons, labels, and many other things can be placed here! -->
       <!-- Here is a label for example -->
-      <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal" data-id="{{$paciente->id}}" data-nombre="{{$paciente->nombre}}" data-apellidos="{{$paciente->apellidos}}"  data-telefono="{{$paciente->telefono}}" data-email="{{$paciente->email}}" data-celular="{{$paciente->celular}}"  data-fecha_nacimiento="{{$paciente->fecha_nacimiento}}" data-edad="{{$paciente->edad}}" data-antecedente_enfermedad="{{$paciente->antecedente_enfermedad}}" data-informacion_adicional="{{$paciente->informacion_adicional}}" data-sexo="{{$paciente->sexo}}" data-pais="{{$paciente->pais}}"><span class="fa fa-edit"></span></a>
+      <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal" data-json="{{$paciente}}"><span class="fa fa-edit"></span></a>
       <a href="#" id="imprimir" class="btn btn-success btn-sm"> <span class="fa fa-print"></span></a>
     </div><!-- /.box-tools -->
   </div><!-- /.box-header -->
@@ -117,7 +117,7 @@
 </div><!-- /.box -->
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -128,75 +128,88 @@
           <div class="modal-body">
             
                  <input type="hidden" name="paciente_id" id="paciente_id" >
-              <div class="form-group">
-                <label for="nombre_paciente">Nombres</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre Completo">
-              </div>
-
-              <div class="form-group">
-                <label for="nombre_paciente">Apellidos</label>
-                <input type="text" class="form-control" name="apellidos" id="apellidos"placeholder="Apellidos">
-              </div>
-              
-             
-              <div class="form-group">
-                <label for="telefono">Telefono</label>
-                <input type="number" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
-              </div>
-
-               <div class="form-group">
-                <label for="nombre_paciente">Email</label>
-                <input type="text" class="form-control" name="email" id="email"placeholder="Correo Electronico ">
-              </div>
-
-              <div class="form-group">
-                <label for="telefono">Celular</label>
-                <input type="number" class="form-control" name="celular" id="celular" placeholder="celular">
-              </div>
-              <crear-paciente inline-template>
-                
-                <div class="form-group">
-                  <label for="Edad">Fecha de Nacimiento </label>
-                  <input type="text" class="form-control" v-model='birthdate' data-inputmask="'alias': 'dd/mm/yyyy'" data-mask name="fecha_nacimiento" id="fecha_nacimiento">
-                </div>    
-                <div class="form-group">
-                  <label for="Edad">Edad</label>
-                  <input type="number" class="form-control" :value='getAge(birthdate)' name="edad" placeholder="Edad">
-                </div>  
-                
-              </crear-paciente>
-              {{-- <div class="form-group">
-                <label for="Edad">Fecha de Nacimiento </label>
-                <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask name="fecha_nacimiento" id="fecha_nacimiento" >
-              </div>    
-
-              <div class="form-group">
-                <label for="Edad">Edad</label>
-                <input type="number" class="form-control" name="edad"  id="edad" placeholder="Edad">
-              </div>   --}}
-              <div class="form-group">
-                <label for="Pais">Pais</label>
-                <input type="text" class="form-control" name="pais"  id="pais" placeholder="Pais">
-              </div>      
-             <div class="form-group">
-                <label for="Sexo">Sexo</label>
-
-                <select  class="form-control" name="sexo" id="sexo">
-                  <option value="hombre">Hombre</option>
-                  <option value="mujer">Mujer</option>
-                  
-                </select>
+              <div class="row">
+                <div class="form-group col-md-5">
+                  <label for="nombre_paciente">Nombres</label>
+                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre Completo">
+                </div>
   
-            </div>
-              <div class="form-group">
-                  <label for="descripcion">Antecedente Enfermedades</label>
-                  <textarea class="form-control" rows="3" name="antecedente_enfermedad" id="antecedente_enfermedad"></textarea>
+                <div class="form-group col-md-5">
+                  <label for="nombre_paciente">Apellidos</label>
+                  <input type="text" class="form-control" name="apellidos" id="apellidos"placeholder="Apellidos">
+                </div>
+                
+               
+                <div class="form-group col-md-2">
+                  <label for="telefono">Telefono</label>
+                  <input type="number" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
+                </div>
+
               </div>
 
-               <div class="form-group">
-                  <label for="descripcion">Informacion Adicional</label>
-                  <textarea class="form-control" rows="3" name="informacion_adicional" id="informacion_adicional"></textarea>
-              </div> 
+         
+              <crear-paciente inline-template>
+                <div class="row">
+                  <div class="form-group col-md-3">
+                    <label for="telefono">Celular</label>
+                    <input type="number" class="form-control" name="celular" id="celular" placeholder="celular">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="Edad">Fecha de Nacimiento </label>
+                    <input type="text" class="form-control" v-model='birthdate' data-inputmask="'alias': 'dd/mm/yyyy'" data-mask name="fecha_nacimiento" id="fecha_nacimiento">
+                  </div>    
+                  <div class="form-group col-md-3">
+                    <label for="Edad">Edad</label>
+                    <input type="number" class="form-control" :value='getAge(birthdate)' name="edad" placeholder="Edad">
+                  </div>  
+                  <div class="form-group col-md-3">
+                      <label for="nombre_paciente">Email</label>
+                      <input type="text" class="form-control" name="email" id="email"placeholder="Correo Electronico ">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-2">
+                    <label for="Pais">Pais</label>
+                    <input type="text" class="form-control" name="pais"  id="pais" placeholder="Pais">
+                  </div>      
+                  <div class="form-group col-md-2">
+                      <label for="Sexo">Sexo</label>
+      
+                      <select  class="form-control" name="sexo" id="sexo">
+                        <option value="hombre">Hombre</option>
+                        <option value="mujer">Mujer</option>
+                      </select>
+                  </div>
+                  <div class="form-group col-md-4">
+                      <label for="descripcion">Antecedente Enfermedades</label>
+                      <textarea class="form-control" rows="3" name="antecedente_enfermedad" id="antecedente_enfermedad"></textarea>
+                  </div>
+    
+                  <div class="form-group col-md-4">
+                      <label for="descripcion">Informacion Adicional</label>
+                      <textarea class="form-control" rows="3" name="informacion_adicional" id="informacion_adicional"></textarea>
+                  </div> 
+                  
+                </div>
+                <div class="row" v-if="getAge(birthdate) < 16">
+                  
+                  <div class="col-md-12"> <h5 class="text-primary">DATOS DEL PADRE</h5> </div>
+                  <div class="form-group col-md-5">
+                    <label for="nombre_paciente">Nombre completo</label>
+                    <input type="text" class="form-control" name="father_name" placeholder="Nombre del Padre">
+                  </div>
+                  <div class="form-group col-md-5">
+                    <label for="nombre_paciente">Domilio</label>
+                    <input type="text" class="form-control" name="father_address" placeholder="Domicilio">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="telefono">Celular </label>
+                    <input type="number" class="form-control" name="father_phone" placeholder="celular">
+                  </div>
+              
+                </div>
+              </crear-paciente>
+  
 
           
           </div>
@@ -215,67 +228,59 @@
 <script type="text/javascript"> 
 
 
-  var paciente = <?php echo  json_encode($paciente); ?>;
+  // var paciente = <?php echo  json_encode($paciente); ?>;
   
     $('#myModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
-    var pacienteId = button.data('id') // Extract info from data-* attributes
-    var nombre = button.data('nombre');
-    var apellidos = button.data('apellidos');
-    var telefono = button.data('telefono');
-    var email = button.data('email');
-    var celular = button.data('celular');
-    var fecha_nacimiento = button.data('fecha_nacimiento');
-    var edad = button.data('edad');
-    var antecedente_enfermedad = button.data('antecedente_enfermedad');
-    var informacion_adicional = button.data('informacion_adicional');
-    var sexo= button.data('sexo');
-  
-  
-    // console.log('disparando evento ');
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
+    var paciente = button.data('json') // Extract info from data-* attributes
+    console.log(paciente);
+    var date = moment(paciente.fecha_nacimiento);
+    console.log(date);
+    var modal = $(this);
    // modal.find('.modal-title').text('Pieza Nro' + dienteId)
-    modal.find('.modal-body #paciente_id').val(pacienteId)
+    modal.find('.modal-body #paciente_id').val(paciente.id)
   
-    modal.find('.modal-body #nombre').val(nombre)
-    modal.find('.modal-body #apellidos').val(apellidos).change()
-    modal.find('.modal-body #telefono').val(telefono).change()
-    modal.find('.modal-body #email').val(email).change()
-    modal.find('.modal-body #celular').val(celular).change()
-    modal.find('.modal-body #fecha_nacimiento').val(fecha_nacimiento).change()
-    modal.find('.modal-body #edad').val(edad).change()
-    modal.find('.modal-body #antecedente_enfermedad').val(antecedente_enfermedad).change()
-    modal.find('.modal-body #informacion_adicional').val(informacion_adicional).change()
-    modal.find('.modal-body #sexo').val(sexo).change()
+    modal.find('.modal-body #nombre').val(paciente.nombre)
+    modal.find('.modal-body #apellidos').val(paciente.apellidos).change()
+    modal.find('.modal-body #telefono').val(paciente.telefono).change()
+    modal.find('.modal-body #email').val(paciente.email).change()
+    modal.find('.modal-body #celular').val(paciente.celular).change()
+    modal.find('.modal-body #fecha_nacimiento').val(date.format('DD/MM/YYYY')).change()
+    modal.find('.modal-body #edad').val(paciente.edad).change()
+    modal.find('.modal-body #antecedente_enfermedad').val(paciente.antecedente_enfermedad).change()
+    modal.find('.modal-body #informacion_adicional').val(paciente.informacion_adicional).change()
+    modal.find('.modal-body #sexo').val(paciente.sexo).change()
+    modal.find('.modal-body #father_name').val(paciente.father_name).change()
+    modal.find('.modal-body #father_address').val(paciente.father_address).change()
+    modal.find('.modal-body #father_phone').val(paciente.father_phone).change()
     
   
-  })
+  });
       
-     $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-      $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
-      //Money Euro
-      $("[data-mask]").inputmask();
-  
-  $("#imprimir").click(function() {
-    // alert("hola");
-    console.log(paciente);
-    var doc = new jsPDF();
-    doc.text(80, 20, 'Historial Clinico');
-    doc.text(20, 30, 'Paciente: '+paciente.nombre +" "+paciente.apellidos);
-  
-    doc.text(20, 40, 'Correo Electronico: '+paciente.email);
-    doc.text(20, 50, 'celular: '+paciente.celular);
-    doc.text(20, 60, 'Fecha de Vencimiento: '+paciente.fecha_nacimiento);
-    doc.text(20, 70, 'Edad : '+paciente.edad);
-    doc.text(20, 80, 'Antedentes : '+paciente.antecedente_enfermedad);
-    doc.text(20, 90, 'Informacion Adicional :' + paciente.informacion_adicional);
-    doc.text(20, 100, 'Sexo: '+paciente.sexo );
-  
-  
-    doc.save('histoiral.pdf');
-  });    
+    $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+    $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+    //Money Euro
+    $("[data-mask]").inputmask();
+    
+    $("#imprimir").click(function() {
+      // alert("hola");
+      let paciente = <?php echo json_encode($paciente)?>;
+      // console.log(paciente);
+      var doc = new jsPDF();
+      doc.text(80, 20, 'Historial Clinico');
+      doc.text(20, 30, 'Paciente: '+paciente.nombre +" "+paciente.apellidos);
+    
+      doc.text(20, 40, 'Correo Electronico: '+paciente.email);
+      doc.text(20, 50, 'celular: '+paciente.celular);
+      doc.text(20, 60, 'Fecha de Vencimiento: '+paciente.fecha_nacimiento);
+      doc.text(20, 70, 'Edad : '+paciente.edad);
+      doc.text(20, 80, 'Antedentes : '+paciente.antecedente_enfermedad);
+      doc.text(20, 90, 'Informacion Adicional :' + paciente.informacion_adicional);
+      doc.text(20, 100, 'Sexo: '+paciente.sexo );
+    
+    
+      doc.save('histoiral.pdf');
+    });    
   
   </script>
   

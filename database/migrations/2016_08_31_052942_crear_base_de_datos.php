@@ -45,6 +45,9 @@ class CrearBaseDeDatos extends Migration
             $table->string('pais')->nullable();
             $table->string('informacion_adicional')->nullable();
             $table->string('antecedente_enfermedad')->nullable();
+            $table->string('father_name')->nullable();
+            $table->string('father_address')->nullable();
+            $table->integer('father_phone')->nullable();
             $table->integer('id_odontologo');
             $table->timestamps();
             });

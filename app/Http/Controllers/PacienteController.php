@@ -50,36 +50,18 @@ class PacienteController extends Controller
     {
         //
         $user = Auth::user();
-
-         $input = $request->all();
-        //  $date =  Carbon::createFromFormat('d/m/Y',$request->fecha_nacimiento);
-        // return $date;
-
+       
          //para edicion del paciente
         if ($request->has('paciente_id')) {
             //
             $paciente = Paciente::where('id',$request->input('paciente_id'))->first();
-            $paciente->nombre = $request->input('nombre');
-            $paciente->apellidos = $request->input('apellidos');
-            $paciente->fecha_nacimiento = Carbon::createFromFormat('d/m/Y',$request->fecha_nacimiento)->toDateString();
-            $paciente->telefono = $request->input('telefono');
-            $paciente->celular = $request->input('celular');
-            $paciente->email = $request->input('email');
-            $paciente->edad = $request->input('edad');
-            $paciente->sexo = $request->input('sexo');
-            $paciente->pais = $request->input('pais');
-            $paciente->informacion_adicional = $request->input('informacion_adicional');
-            $paciente->antecedente_enfermedad = $request->input('informacion_adicional');
-
-            $paciente->save();
-
-
-            return back()->withInput();
+            $is_new = false;                 
+        }else{
+            $paciente = new Paciente;
+            $is_new =true;
         }
-
-       
+      
         //para registro del paciente
-        $paciente = new Paciente;
         $paciente->nombre = $request->input('nombre');
         $paciente->apellidos = $request->input('apellidos');
         $paciente->fecha_nacimiento =  Carbon::createFromFormat('d/m/Y',$request->fecha_nacimiento)->toDateString();
@@ -89,11 +71,17 @@ class PacienteController extends Controller
         $paciente->edad = $request->input('edad');
         $paciente->sexo = $request->input('sexo');
         $paciente->informacion_adicional = $request->input('informacion_adicional');
-        $paciente->antecedente_enfermedad = $request->input('informacion_adicional');
+        $paciente->antecedente_enfermedad = $request->input('antecedente_enfermedad');
+        $paciente->father_name = $request->input('father_name');
+        $paciente->father_address = $request->input('father_address');
+        $paciente->father_phone = $request->input('father_phone');
         $paciente->id_odontologo = $user->id;
         // return $paciente;
         $paciente->save();
 
+        if(!$is_new){
+            return back()->withInput();
+        }
 
         for ($i=11; $i <= 18 ; $i++) { 
             # code...
@@ -144,8 +132,6 @@ class PacienteController extends Controller
             $diente->palatino = 0;
             $diente->save();
         }
-
-
 
         return back()->withInput();
     }
